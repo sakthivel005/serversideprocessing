@@ -30,6 +30,8 @@ Create a HTML file of forms
 Publish the website in the given URL.
 
 ## PROGRAM :
+
+## math.html:
 ```
 <!DOCTYPE html>
 <html>
@@ -112,8 +114,8 @@ Publish the website in the given URL.
 </body>
 </html>
 ```
-## viewsw.py:
-
+## views.py:
+```
 from django.shortcuts import render
 def rectarea(request):
     context={}
@@ -133,14 +135,32 @@ def rectarea(request):
         context['b'] = b
         print('Area=',area)
     return render(request,'myapp/math.html',context)
+```
+
+## urls.py:
+```
+from django.contrib import admin
+from django.urls import path
+from myapp import views
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('areaofrectangle/',views.rectarea,name="areaofrectangle"),
+    path('',views.rectarea,name="areaofrectangleroot")
+]
+```
 
 
+## SERVER OUTPUT:
+
+![Screenshot 2023-05-17 160832](https://github.com/sakthivel005/serversideprocessing/assets/120550359/12b163af-cfd7-4314-90cb-1abcfb7ec94a)
 
 
-## OUTPUT:
+## CLIENT OUTPUT:
 
-### Home Page:
+![Screenshot 2023-05-17 160718](https://github.com/sakthivel005/serversideprocessing/assets/120550359/fdf8e3e7-e0b9-4e48-85d5-66f6bf3fbda1)
+
 
 
 ## Result:
+Thus a program to design a website to perform mathematical calculations in server side has been created and executed successfully.
 
